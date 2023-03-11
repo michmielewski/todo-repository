@@ -7,11 +7,15 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { TittleComponent } from './components/tittle/tittle.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContentComponent } from './components/content/content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TittleComponent
+    TittleComponent,
+    AboutComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
