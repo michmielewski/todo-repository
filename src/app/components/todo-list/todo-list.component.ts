@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Todo } from 'src/app/model/Todo'
+import { Todo } from 'src/app/models/Todo'
 
 @Component({
   selector: 'app-todo-list',
@@ -12,13 +12,7 @@ public todoCollection: Array<Todo> = [
     title: 'Pierwsze zadanie',
     completed: false
   },
-  {
-    title: 'Drugie zadanie',
-    completed: true
-  },
-  {
-    title: 'Trzecie zadanie',
-    completed: true
-  },
+  new Todo('Drugie zadanie', true),
+  new Todo('Trzecie zadanie', true)
 ]
 }
