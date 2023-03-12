@@ -9,6 +9,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+
 
 import { AppComponent } from './app.component';
 import { TittleComponent } from './components/tittle/tittle.component';
@@ -37,7 +40,9 @@ import { AddTodoComponent } from './components/add-todo/add-todo.component';
     MatIconModule,
     MatButtonModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
