@@ -19,4 +19,9 @@ export class TodoListComponent implements OnInit {
   {
     this.todoCollection= this.todoService.getTodoCollection();
   }
+
+  public onChange(event: Todo)
+  {
+    console.log(event);
+  }
 }
