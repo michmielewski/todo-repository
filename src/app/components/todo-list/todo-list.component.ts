@@ -1,18 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/models/Todo'
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent {
-public todoCollection: Array<Todo> = [
+export class TodoListComponent implements OnInit {
+
+  public todoCollection: Array<Todo> = [];
+
+  public constructor(
+    private todoService: TodoService
+  ){  }
+
+  public ngOnInit(): void 
   {
-    title: 'Pierwsze zadanie',
-    completed: false
-  },
-  new Todo('Drugie zadanie', true),
-  new Todo('Trzecie zadanie', true)
-]
+    this.todoCollection= this.todoService.getTodoCollection();
+  }
 }
