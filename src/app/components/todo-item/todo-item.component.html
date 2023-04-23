@@ -1,4 +1,4 @@
-<div [ngClass]="setClass()">
+<div class ="container">
     <span>
         <mat-checkbox 
             color="primary" 
@@ -8,7 +8,7 @@
         </mat-checkbox>
     </span>
 
-    <span>
+    <span [ngClass]="setClass()">
         {{todo.title}}
     </span>
 
