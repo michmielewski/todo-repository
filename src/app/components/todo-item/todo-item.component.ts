@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from 'src/app/model/Todo';
 
 @Component({
@@ -14,6 +14,9 @@ export class TodoItemComponent {
   @Output()
   public change: EventEmitter<Todo> = new EventEmitter();
 
+  @Output()
+  public delete: EventEmitter<Todo> = new EventEmitter();
+
   public setClass(): string
   {
     return this.todo.completed ? 'completed' : '';
@@ -22,5 +25,10 @@ export class TodoItemComponent {
   public onChange(): void
   {
     this.change.emit(this.todo);
+  }
+
+  public onDelete(): void
+  {
+    this.delete.emit(this.todo);
   }
 }

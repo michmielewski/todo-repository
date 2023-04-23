@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Todo } from 'src/app/model/Todo'
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -7,7 +7,9 @@ import { TodoService } from 'src/app/services/todo.service';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnChanges {
+  @Input()
+  public newTodo!: Todo;
 
   public todoCollection: Array<Todo> = [];
 
@@ -17,13 +19,35 @@ export class TodoListComponent implements OnInit {
 
   public ngOnInit(): void 
   {
-    this.todoService.getTodoCollection().subscribe((todos: Todo []) => {
-      this.todoCollection= todos;
-    });    
+    this.refresh;
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void
+  {
+    if(
+      changes['newTodo'] &&
+      changes['newTodo']?.previousValue != changes['newTodo']?.currentValue
+    )  {
+      this.todoService.addTodoItem(changes['newTodo']?.currentValue).subscribe(
+        (todo:Todo) => {
+          this.refresh();
+        }
+      );
+    }
   }
 
   public onChange(event: Todo)
   {
     console.log(event);
+  }
+
+  public onDelete(todo: Todo){
+    console.log(todo);
+  }
+
+  private refresh(): void{
+    this.todoService.getTodoCollection().subscribe((todos: Todo[]) => {
+      this.todoCollection = todos;
+    });
   }
 }
